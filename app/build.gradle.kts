@@ -2,6 +2,9 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-android-extensions")
+    id("kotlin-kapt")
+    id("androidx.navigation.safeargs.kotlin")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -21,19 +24,51 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
+    }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.3.72")
-    implementation("androidx.core:core-ktx:1.3.1")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.4.10")
+    implementation("androidx.core:core-ktx:1.3.2")
     implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.1")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.2")
     testImplementation("junit:junit:4.13")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 
+    // Navigation dependencies
+    implementation("androidx.navigation:navigation-fragment-ktx:2.3.0")
+    implementation("androidx.navigation:navigation-ui-ktx:2.3.0")
+
+    // Dagger Hilt
+    implementation("com.google.dagger:hilt-android:2.29.1-alpha")
+    kapt("com.google.dagger:hilt-android-compiler:2.29.1-alpha")
+    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02")
+    kapt("androidx.hilt:hilt-compiler:1.0.0-alpha02")
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+
+    // Paging 3
+    implementation("androidx.paging:paging-runtime:3.0.0-alpha07")
 }
