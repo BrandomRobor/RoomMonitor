@@ -14,7 +14,7 @@ class RoomDetailsPagingSource(private val roomDetailsApi: RoomDetailsApi) :
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, RoomDetails> {
         val position = params.key ?: STARTING_PAGE
         return try {
-            val roomsDetails = roomDetailsApi.getAll()
+            val roomsDetails = roomDetailsApi.getRooms(position, 20)
             LoadResult.Page(
                 roomsDetails,
                 if (position == STARTING_PAGE) null else position - 1,
