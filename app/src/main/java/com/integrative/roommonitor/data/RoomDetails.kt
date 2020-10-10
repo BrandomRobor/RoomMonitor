@@ -1,4 +1,4 @@
-package com.integrative.roommonitor
+package com.integrative.roommonitor.data
 
 data class RoomDetails(
     val id: String,
