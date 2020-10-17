@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import com.integrative.roommonitor.R
 import com.integrative.roommonitor.databinding.FragmentRoomsBinding
 import dagger.hilt.android.AndroidEntryPoint
