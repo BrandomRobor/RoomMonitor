@@ -16,7 +16,7 @@ object AppModule {
     @Singleton
     fun provideRetrofit(): Retrofit =
         Retrofit.Builder()
-            .baseUrl("uri")
+            .baseUrl("https://roommonitor-api.herokuapp.com/")
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
 
