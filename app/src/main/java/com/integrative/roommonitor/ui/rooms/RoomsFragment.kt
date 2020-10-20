@@ -23,7 +23,10 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms) {
 
         binding.apply {
             roomsRecylerView.setHasFixedSize(true)
-            roomsRecylerView.adapter = adapter
+            roomsRecylerView.adapter = adapter.withLoadStateHeaderAndFooter(
+                RoomDetailsLoadStateAdapter { adapter.retry() },
+                RoomDetailsLoadStateAdapter { adapter.retry() }
+            )
         }
 
         viewModel.roomsDetails.observe(viewLifecycleOwner) {
