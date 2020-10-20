@@ -9,13 +9,13 @@ import javax.inject.Singleton
 
 @Singleton
 class RoomDetailsRepository @Inject constructor(private val roomDetailsApi: RoomDetailsApi) {
-    fun getAllRoomsDetails() =
+    fun getAllRoomsDetails(query: String) =
         Pager(
             config = PagingConfig(
                 pageSize = 20,
                 maxSize = 100,
                 enablePlaceholders = false
             ),
-            pagingSourceFactory = { RoomDetailsPagingSource(roomDetailsApi) }
+            pagingSourceFactory = { RoomDetailsPagingSource(roomDetailsApi, query) }
         ).liveData
 }

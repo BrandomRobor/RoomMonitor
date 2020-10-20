@@ -1,7 +1,11 @@
 package com.integrative.roommonitor.ui.rooms
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -25,6 +29,7 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms) {
 
         binding.apply {
             roomsRecylerView.setHasFixedSize(true)
+            roomsRecylerView.itemAnimator = null
             roomsRecylerView.adapter = adapter.withLoadStateHeaderAndFooter(
                 RoomDetailsLoadStateAdapter { adapter.retry() },
                 RoomDetailsLoadStateAdapter { adapter.retry() }
@@ -53,6 +58,37 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms) {
                 }
             }
         }
+
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_fragment_rooms, menu)
+
+        val searchItem = menu.findItem(R.id.rooms_search_button)
+        val searchView = searchItem.actionView as SearchView
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                viewModel.searchQuery.postValue(query ?: "")
+                binding.roomsRecylerView.scrollToPosition(0)
+                searchView.clearFocus()
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean = true
+        })
+
+        searchItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
+            override fun onMenuItemActionExpand(p0: MenuItem?): Boolean = true
+
+            override fun onMenuItemActionCollapse(p0: MenuItem?): Boolean {
+                viewModel.searchQuery.postValue("")
+                binding.roomsRecylerView.scrollToPosition(0)
+                return true
+            }
+        })
     }
 
     override fun onDestroyView() {
