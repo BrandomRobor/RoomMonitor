@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Failed to fetch data.\nCheck your connection."
+        android:text="@string/initial_loading_error"
         android:textAlignment="center"
         android:visibility="gone"
         tools:visibility="visible" />
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="No rooms found." />
+        android:text="@string/rooms_no_items" />
 
     <Button
         android:id="@+id/rooms_button_retry"
@@ -44,6 +44,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/rooms_text_error"
         android:layout_centerInParent="true"
-        android:text="Retry" />
+        android:text="@string/retry_button" />
 
 </RelativeLayout>

@@ -15,7 +15,7 @@
             android:id="@+id/details_room_icon"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:contentDescription="Room icon"
+            android:contentDescription="@string/room_icon_description"
             android:src="@drawable/ic_info"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -1,3 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">RoomMonitor</string>
+    <string name="room_icon_description">Room icon</string>
+    <string name="paging_error_message">Error loading more data.\nPlease check your internet connection.</string>
+    <string name="retry_button">Retry</string>
+    <string name="initial_loading_error">Failed to fetch data.\nCheck your connection.</string>
+    <string name="rooms_no_items">No rooms found.</string>
+    <string name="search_action_title">Search</string>
 </resources>
