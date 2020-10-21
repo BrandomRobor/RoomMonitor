@@ -9,7 +9,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.observe
+import androidx.lifecycle.Observer
 import androidx.paging.LoadState
 import com.integrative.roommonitor.R
 import com.integrative.roommonitor.databinding.FragmentRoomsBinding
@@ -28,9 +28,9 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms) {
         val adapter = RoomDetailsAdapter()
 
         binding.apply {
-            roomsRecylerView.setHasFixedSize(true)
-            roomsRecylerView.itemAnimator = null
-            roomsRecylerView.adapter = adapter.withLoadStateHeaderAndFooter(
+            roomsRecyclerView.setHasFixedSize(true)
+            roomsRecyclerView.itemAnimator = null
+            roomsRecyclerView.adapter = adapter.withLoadStateHeaderAndFooter(
                 RoomDetailsLoadStateAdapter { adapter.retry() },
                 RoomDetailsLoadStateAdapter { adapter.retry() }
             )
@@ -39,19 +39,19 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms) {
             }
         }
 
-        viewModel.roomsDetails.observe(viewLifecycleOwner) {
+        viewModel.roomsDetails.observe(viewLifecycleOwner, Observer {
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
-        }
+        })
 
         adapter.addLoadStateListener {
             binding.apply {
                 roomsProgressBar.isVisible = it.source.refresh is LoadState.Loading
-                roomsRecylerView.isVisible = it.source.refresh is LoadState.NotLoading
+                roomsRecyclerView.isVisible = it.source.refresh is LoadState.NotLoading
                 roomsButtonRetry.isVisible = it.source.refresh is LoadState.Error
                 roomsTextError.isVisible = it.source.refresh is LoadState.Error
 
                 if (it.source.refresh is LoadState.NotLoading && it.append.endOfPaginationReached && adapter.itemCount < 1) {
-                    roomsRecylerView.isVisible = false
+                    roomsRecyclerView.isVisible = false
                     roomsZeroRooms.isVisible = true
                 } else {
                     roomsZeroRooms.isVisible = false
@@ -72,7 +72,7 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms) {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 viewModel.searchQuery.postValue(query ?: "")
-                binding.roomsRecylerView.scrollToPosition(0)
+                binding.roomsRecyclerView.scrollToPosition(0)
                 searchView.clearFocus()
                 return true
             }
@@ -85,7 +85,7 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms) {
 
             override fun onMenuItemActionCollapse(p0: MenuItem?): Boolean {
                 viewModel.searchQuery.postValue("")
-                binding.roomsRecylerView.scrollToPosition(0)
+                binding.roomsRecyclerView.scrollToPosition(0)
                 return true
             }
         })
