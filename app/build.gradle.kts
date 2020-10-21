@@ -56,8 +56,8 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 
     // Navigation dependencies
-    implementation("androidx.navigation:navigation-fragment-ktx:2.3.0")
-    implementation("androidx.navigation:navigation-ui-ktx:2.3.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.3.1")
+    implementation("androidx.navigation:navigation-ui-ktx:2.3.1")
 
     // Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.29.1-alpha")
@@ -70,5 +70,5 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
 
     // Paging 3
-    implementation("androidx.paging:paging-runtime:3.0.0-alpha07")
+    implementation("androidx.paging:paging-runtime-ktx:3.0.0-alpha07")
 }
