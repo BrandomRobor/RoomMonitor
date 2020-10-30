@@ -50,7 +50,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.4.10")
     implementation("androidx.core:core-ktx:1.3.2")
     implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.2")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     testImplementation("junit:junit:4.13")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
@@ -70,7 +70,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
 
     // Paging 3
-    implementation("androidx.paging:paging-runtime-ktx:3.0.0-alpha07")
+    implementation("androidx.paging:paging-runtime-ktx:3.0.0-alpha08")
 
     // LeakCanary
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.5")
