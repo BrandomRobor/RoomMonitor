@@ -9,7 +9,6 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.paging.LoadState
 import com.integrative.roommonitor.R
 import com.integrative.roommonitor.databinding.FragmentRoomsBinding
@@ -39,7 +38,7 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms) {
             }
         }
 
-        viewModel.roomsDetails.observe(viewLifecycleOwner, Observer {
+        viewModel.roomsDetails.observe(viewLifecycleOwner, {
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
         })
 
