@@ -5,4 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.details.DetailsFragment">
 
+    <include
+        android:id="@+id/fragment_details_include"
+        layout="@layout/item_room_details_generic" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
