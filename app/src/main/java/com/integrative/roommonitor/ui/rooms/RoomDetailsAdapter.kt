@@ -9,11 +9,25 @@ import com.integrative.roommonitor.R
 import com.integrative.roommonitor.data.RoomDetails
 import com.integrative.roommonitor.databinding.ItemRoomDetailsBinding
 
-class RoomDetailsAdapter : PagingDataAdapter<RoomDetails, RoomDetailsAdapter.DetailsViewHolder>(
-    detailsComparator
-) {
-    class DetailsViewHolder(private val binding: ItemRoomDetailsBinding) :
+class RoomDetailsAdapter(private val listener: OnDetailsCardClickListener) :
+    PagingDataAdapter<RoomDetails, RoomDetailsAdapter.DetailsViewHolder>(
+        detailsComparator
+    ) {
+    inner class DetailsViewHolder(private val binding: ItemRoomDetailsBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.root.setOnClickListener {
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val item = getItem(position)
+                    item?.let {
+                        listener.onCardClick(item)
+                    }
+                }
+            }
+        }
+
         fun bind(roomDetails: RoomDetails) {
             binding.apply {
                 detailsRoomIcon.setImageResource(R.drawable.ic_info)
@@ -21,6 +35,10 @@ class RoomDetailsAdapter : PagingDataAdapter<RoomDetails, RoomDetailsAdapter.Det
                 detailsRoomDescription.text = roomDetails.description ?: "No description available"
             }
         }
+    }
+
+    interface OnDetailsCardClickListener {
+        fun onCardClick(roomDetails: RoomDetails)
     }
 
     companion object {

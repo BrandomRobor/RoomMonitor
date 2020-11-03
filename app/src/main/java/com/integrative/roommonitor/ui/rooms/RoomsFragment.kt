@@ -9,13 +9,16 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.integrative.roommonitor.R
+import com.integrative.roommonitor.data.RoomDetails
 import com.integrative.roommonitor.databinding.FragmentRoomsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RoomsFragment : Fragment(R.layout.fragment_rooms) {
+class RoomsFragment : Fragment(R.layout.fragment_rooms),
+    RoomDetailsAdapter.OnDetailsCardClickListener {
     private val viewModel by viewModels<RoomsViewModel>()
     private var _binding: FragmentRoomsBinding? = null
     private val binding get() = _binding!!
@@ -24,7 +27,7 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms) {
         super.onViewCreated(view, savedInstanceState)
 
         _binding = FragmentRoomsBinding.bind(view)
-        val adapter = RoomDetailsAdapter()
+        val adapter = RoomDetailsAdapter(this)
 
         binding.apply {
             roomsRecyclerView.setHasFixedSize(true)
@@ -88,6 +91,11 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms) {
                 return true
             }
         })
+    }
+
+    override fun onCardClick(roomDetails: RoomDetails) {
+        val action = RoomsFragmentDirections.actionRoomsFragmentToDetailsFragment(roomDetails)
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {

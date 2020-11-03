@@ -1,7 +1,10 @@
 package com.integrative.roommonitor.data
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class RoomDetails(
     @Json(name = "_id")
     val id: String,
@@ -9,4 +12,4 @@ data class RoomDetails(
     val description: String?,
     val location: String?,
     val iconId: String?
-)
+) : Parcelable
