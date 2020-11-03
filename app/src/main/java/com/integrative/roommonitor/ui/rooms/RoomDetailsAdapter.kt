@@ -7,13 +7,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.integrative.roommonitor.R
 import com.integrative.roommonitor.data.RoomDetails
-import com.integrative.roommonitor.databinding.ItemRoomDetailsBinding
+import com.integrative.roommonitor.databinding.ItemRoomDetailsCardBinding
 
 class RoomDetailsAdapter(private val listener: OnDetailsCardClickListener) :
     PagingDataAdapter<RoomDetails, RoomDetailsAdapter.DetailsViewHolder>(
         detailsComparator
     ) {
-    inner class DetailsViewHolder(private val binding: ItemRoomDetailsBinding) :
+    inner class DetailsViewHolder(private val binding: ItemRoomDetailsCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         init {
@@ -29,7 +29,7 @@ class RoomDetailsAdapter(private val listener: OnDetailsCardClickListener) :
         }
 
         fun bind(roomDetails: RoomDetails) {
-            binding.apply {
+            binding.itemRoomInclude.apply {
                 detailsRoomIcon.setImageResource(R.drawable.ic_info)
                 detailsRoomTitle.text = roomDetails.title
                 detailsRoomDescription.text = roomDetails.description ?: "No description available"
@@ -53,7 +53,7 @@ class RoomDetailsAdapter(private val listener: OnDetailsCardClickListener) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailsViewHolder {
         val binding =
-            ItemRoomDetailsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemRoomDetailsCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return DetailsViewHolder(binding)
     }
 
