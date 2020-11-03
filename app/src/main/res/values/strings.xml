@@ -7,4 +7,6 @@
     <string name="initial_loading_error">Failed to fetch data.\nCheck your connection.</string>
     <string name="rooms_no_items">No rooms found.</string>
     <string name="search_action_title">Search</string>
+    <string name="fragment_rooms_title">Rooms</string>
+    <string name="fragment_details_title">Details</string>
 </resources>
