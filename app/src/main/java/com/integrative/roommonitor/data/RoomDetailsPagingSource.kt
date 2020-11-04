@@ -4,11 +4,9 @@ import androidx.paging.PagingSource
 import com.integrative.roommonitor.api.RoomDetailsApi
 import retrofit2.HttpException
 import java.io.IOException
-import java.util.Locale
 
 class RoomDetailsPagingSource(
-    private val roomDetailsApi: RoomDetailsApi,
-    private val query: String
+    private val roomDetailsApi: RoomDetailsApi
 ) :
     PagingSource<Int, RoomDetails>() {
     companion object {
@@ -19,15 +17,10 @@ class RoomDetailsPagingSource(
         val position = params.key ?: STARTING_PAGE
         return try {
             val roomsDetails = roomDetailsApi.getRooms(position, params.loadSize)
-            val trimmedQuery = query.toLowerCase(Locale.ROOT).trim()
-            val filteredDetails =
-                if (trimmedQuery.isEmpty()) roomsDetails else roomsDetails.filter {
-                    it.title.toLowerCase(Locale.ROOT).contains(trimmedQuery)
-                }
             LoadResult.Page(
-                filteredDetails,
+                roomsDetails,
                 if (position == STARTING_PAGE) null else position - 1,
-                if (filteredDetails.isEmpty()) null else position + 1
+                if (roomsDetails.isEmpty()) null else position + 1
             )
         } catch (io: IOException) {
             LoadResult.Error(io)
