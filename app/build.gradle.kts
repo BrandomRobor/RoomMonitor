@@ -74,4 +74,9 @@ dependencies {
 
     // LeakCanary
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.5")
+
+    // Navigation drawer
+    implementation("com.mikepenz:materialdrawer:8.1.8")
+    implementation("com.mikepenz:materialdrawer-nav:8.1.8")
+    implementation("com.mikepenz:materialdrawer-iconics:8.1.8")
 }
