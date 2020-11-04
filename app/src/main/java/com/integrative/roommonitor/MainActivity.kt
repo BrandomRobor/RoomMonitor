@@ -8,9 +8,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.integrative.roommonitor.databinding.ActivityMainBinding
+import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial
+import com.mikepenz.materialdrawer.iconics.iconicsIcon
 import com.mikepenz.materialdrawer.model.NavigationDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
-import com.mikepenz.materialdrawer.model.interfaces.iconRes
 import com.mikepenz.materialdrawer.model.interfaces.nameRes
 import com.mikepenz.materialdrawer.util.ExperimentalNavController
 import com.mikepenz.materialdrawer.util.addItems
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             addItems(
                 NavigationDrawerItem(R.id.roomsFragment, PrimaryDrawerItem().apply {
                     nameRes = R.string.fragment_rooms_title
-                    iconRes = R.drawable.ic_info
+                    iconicsIcon = CommunityMaterial.Icon3.cmd_map_marker
                 })
             )
         }

@@ -79,4 +79,9 @@ dependencies {
     implementation("com.mikepenz:materialdrawer:8.1.8")
     implementation("com.mikepenz:materialdrawer-nav:8.1.8")
     implementation("com.mikepenz:materialdrawer-iconics:8.1.8")
+
+    // Icons library
+    implementation("com.mikepenz:iconics-core:5.0.3")
+    implementation("com.mikepenz:iconics-views:5.0.3")
+    implementation("com.mikepenz:community-material-typeface:5.3.45.1-kotlin@aar")
 }

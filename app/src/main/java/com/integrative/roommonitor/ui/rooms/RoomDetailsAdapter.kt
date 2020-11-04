@@ -2,12 +2,14 @@ package com.integrative.roommonitor.ui.rooms
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.integrative.roommonitor.R
 import com.integrative.roommonitor.data.RoomDetails
 import com.integrative.roommonitor.databinding.ItemRoomDetailsCardBinding
+import com.mikepenz.iconics.IconicsDrawable
+import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial
 
 class RoomDetailsAdapter(private val listener: OnDetailsCardClickListener) :
     PagingDataAdapter<RoomDetails, RoomDetailsAdapter.DetailsViewHolder>(
@@ -30,7 +32,15 @@ class RoomDetailsAdapter(private val listener: OnDetailsCardClickListener) :
 
         fun bind(roomDetails: RoomDetails) {
             binding.itemRoomInclude.apply {
-                detailsRoomIcon.setImageResource(R.drawable.ic_info)
+                if (roomDetails.iconId.isNullOrBlank()) {
+                    detailsRoomIcon.isVisible = false
+                } else {
+                    detailsRoomIcon.icon = IconicsDrawable(
+                        binding.root.context,
+                        CommunityMaterial.getIcon(roomDetails.iconId)
+                    )
+                }
+
                 detailsRoomTitle.text = roomDetails.title
                 detailsRoomDescription.text = roomDetails.description ?: "No description available"
             }
