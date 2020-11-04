@@ -31,7 +31,6 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms),
 
         binding.apply {
             roomsRecyclerView.setHasFixedSize(true)
-            roomsRecyclerView.itemAnimator = null
             roomsRecyclerView.adapter = adapter.withLoadStateHeaderAndFooter(
                 RoomDetailsLoadStateAdapter { adapter.retry() },
                 RoomDetailsLoadStateAdapter { adapter.retry() }
