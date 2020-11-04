@@ -6,7 +6,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.integrative.roommonitor.databinding.ActivityMainBinding
 import com.mikepenz.materialdrawer.model.NavigationDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.activityToolbar)
 
         binding.activityNavDrawer.apply {
             addItems(
@@ -42,10 +43,7 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.findNavController()
 
         val appBarConfig = AppBarConfiguration(navController.graph, binding.activityDrawerLayout)
-        setupActionBarWithNavController(navController, appBarConfig)
+        binding.activityToolbar.setupWithNavController(navController, appBarConfig)
         binding.activityNavDrawer.setupWithNavController(navController)
     }
-
-    override fun onSupportNavigateUp(): Boolean =
-        navController.navigateUp() || super.onSupportNavigateUp()
 }
