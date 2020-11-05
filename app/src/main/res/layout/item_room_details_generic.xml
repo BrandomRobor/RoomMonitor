@@ -10,6 +10,7 @@
         android:id="@+id/details_room_icon"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:padding="4dp"
         android:contentDescription="@string/room_icon_description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
