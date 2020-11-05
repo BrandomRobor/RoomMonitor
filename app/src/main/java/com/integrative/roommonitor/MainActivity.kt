@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.activityToolbar)
 
         binding.activityNavDrawer.apply {
             addItems(
@@ -46,5 +45,7 @@ class MainActivity : AppCompatActivity() {
         val appBarConfig = AppBarConfiguration(navController.graph, binding.activityDrawerLayout)
         binding.activityToolbar.setupWithNavController(navController, appBarConfig)
         binding.activityNavDrawer.setupWithNavController(navController)
+
+        setSupportActionBar(binding.activityToolbar)
     }
 }
