@@ -93,7 +93,10 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms),
     }
 
     override fun onCardClick(roomDetails: RoomDetails) {
-        val action = RoomsFragmentDirections.actionRoomsFragmentToDetailsFragment(roomDetails)
+        val action =
+            RoomsFragmentDirections.actionNavigationRoomsFragmentToNavigationDetailsFragment(
+                roomDetails
+            )
         findNavController().navigate(action)
     }
 

@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.activityNavDrawer.apply {
             addItems(
-                NavigationDrawerItem(R.id.roomsFragment, PrimaryDrawerItem().apply {
+                NavigationDrawerItem(R.id.navigation_rooms_fragment, PrimaryDrawerItem().apply {
                     nameRes = R.string.fragment_rooms_title
                     iconicsIcon = CommunityMaterial.Icon3.cmd_map_marker
                 })

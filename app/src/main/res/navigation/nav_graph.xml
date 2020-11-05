@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/roomsFragment">
+    app:startDestination="@id/navigation_rooms_fragment">
 
     <fragment
-        android:id="@+id/roomsFragment"
+        android:id="@+id/navigation_rooms_fragment"
         android:name="com.integrative.roommonitor.ui.rooms.RoomsFragment"
         android:label="@string/fragment_rooms_title"
         tools:layout="@layout/fragment_rooms">
         <action
-            android:id="@+id/action_roomsFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
+            android:id="@+id/action_navigation_rooms_fragment_to_navigation_details_fragment"
+            app:destination="@id/navigation_details_fragment" />
     </fragment>
     <fragment
-        android:id="@+id/detailsFragment"
+        android:id="@+id/navigation_details_fragment"
         android:name="com.integrative.roommonitor.ui.details.DetailsFragment"
         android:label="@string/fragment_details_title"
         tools:layout="@layout/fragment_details">
