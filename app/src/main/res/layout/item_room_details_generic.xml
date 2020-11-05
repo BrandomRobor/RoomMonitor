@@ -13,7 +13,7 @@
         android:contentDescription="@string/room_icon_description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="?attr/actionMenuTextColor" />
+        app:tint="?attr/colorOnSurface" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/details_room_title"
@@ -22,7 +22,7 @@
         android:layout_marginHorizontal="4dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textColor="?attr/actionMenuTextColor"
+        android:textColor="?attr/colorOnSurface"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/details_room_icon"
