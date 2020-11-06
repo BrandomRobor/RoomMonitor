@@ -6,15 +6,17 @@
     android:layout_height="match_parent"
     android:padding="6dp">
 
-    <com.mikepenz.iconics.view.IconicsImageView
+    <ImageView
         android:id="@+id/details_room_icon"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:padding="4dp"
         android:contentDescription="@string/room_icon_description"
+        android:padding="4dp"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="?attr/colorOnSurface" />
+        app:tint="?attr/colorOnSurface"
+        tools:visibility="visible" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/details_room_title"

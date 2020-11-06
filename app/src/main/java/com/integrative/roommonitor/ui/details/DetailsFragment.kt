@@ -24,15 +24,15 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
         binding.apply {
             fragmentDetailsInclude.apply {
-                if (roomDetails.iconId.isNullOrBlank()) {
-                    detailsRoomIcon.isVisible = false
-                } else {
-                    detailsRoomIcon.icon = IconicsDrawable(
-                        binding.root.context,
-                        CommunityMaterial.getIcon(roomDetails.iconId)
+                roomDetails.iconId?.let {
+                    detailsRoomIcon.isVisible = true
+                    detailsRoomIcon.setImageDrawable(
+                        IconicsDrawable(
+                            requireContext(),
+                            CommunityMaterial.getIcon(it)
+                        )
                     )
                 }
-
                 detailsRoomTitle.text = roomDetails.title
                 detailsRoomDescription.text = roomDetails.description
             }
