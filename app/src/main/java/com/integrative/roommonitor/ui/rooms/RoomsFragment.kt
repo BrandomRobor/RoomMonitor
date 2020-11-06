@@ -23,11 +23,13 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms),
     private var _binding: FragmentRoomsBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var adapter: RoomDetailsAdapter
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         _binding = FragmentRoomsBinding.bind(view)
-        val adapter = RoomDetailsAdapter(this)
+        adapter = RoomDetailsAdapter(this)
 
         binding.apply {
             roomsRecyclerView.setHasFixedSize(true)
@@ -46,7 +48,7 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms),
 
         adapter.addLoadStateListener {
             binding.apply {
-                roomsProgressBar.isVisible = it.source.refresh is LoadState.Loading
+                roomsSwipeLayout.isRefreshing = it.source.refresh is LoadState.Loading
                 roomsRecyclerView.isVisible = it.source.refresh is LoadState.NotLoading
                 roomsButtonRetry.isVisible = it.source.refresh is LoadState.Error
                 roomsTextError.isVisible = it.source.refresh is LoadState.Error
@@ -58,6 +60,10 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms),
                     roomsZeroRooms.isVisible = false
                 }
             }
+        }
+
+        binding.roomsSwipeLayout.setOnRefreshListener {
+            adapter.refresh()
         }
 
         setHasOptionsMenu(true)
@@ -91,6 +97,16 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms),
             }
         })
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean =
+        when (item.itemId) {
+            R.id.rooms_refresh_button -> {
+                binding.roomsSwipeLayout.isRefreshing = true
+                adapter.refresh()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
 
     override fun onCardClick(roomDetails: RoomDetails) {
         val action =

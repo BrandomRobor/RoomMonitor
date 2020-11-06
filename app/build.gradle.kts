@@ -84,4 +84,7 @@ dependencies {
     implementation("com.mikepenz:iconics-core:5.0.3")
     implementation("com.mikepenz:iconics-views:5.0.3")
     implementation("com.mikepenz:community-material-typeface:5.3.45.1-kotlin@aar")
+
+    // Swipe to refresh
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 }

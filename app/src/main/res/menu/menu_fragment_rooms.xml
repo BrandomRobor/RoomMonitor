@@ -3,8 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/rooms_search_button"
-        android:title="@string/search_action_title"
         android:icon="@drawable/ic_search"
+        android:title="@string/search_action_title"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="ifRoom|collapseActionView" />
+
+    <item
+        android:id="@+id/rooms_refresh_button"
+        android:title="@string/rooms_refresh_button"
+        app:showAsAction="never" />
 </menu>
