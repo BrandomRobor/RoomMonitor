@@ -21,6 +21,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentDetailsBinding.bind(view)
         val roomDetails = args.roomDetails
+        val adapter = ObjectDataAdapter()
 
         binding.apply {
             fragmentDetailsInclude.apply {
@@ -38,6 +39,9 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                 detailsRoomTitle.text = roomDetails.title
                 detailsRoomDescription.text = roomDetails.description
             }
+
+            detailsObjectRecyclerView.adapter = adapter
+            detailsObjectRecyclerView.isNestedScrollingEnabled = false
         }
     }
 
