@@ -78,8 +78,11 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms),
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                viewModel.searchQuery.postValue(query ?: "")
+                val filteredData = viewModel.roomsDetails.value?.filterSync {
+                    it.title.contains(query!!.trim(), true)
+                }
                 binding.roomsRecyclerView.scrollToPosition(0)
+                adapter.submitData(viewLifecycleOwner.lifecycle, filteredData!!)
                 searchView.clearFocus()
                 return true
             }
@@ -91,8 +94,8 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms),
             override fun onMenuItemActionExpand(p0: MenuItem?): Boolean = true
 
             override fun onMenuItemActionCollapse(p0: MenuItem?): Boolean {
-                viewModel.searchQuery.postValue("")
                 binding.roomsRecyclerView.scrollToPosition(0)
+                adapter.submitData(viewLifecycleOwner.lifecycle, viewModel.roomsDetails.value!!)
                 return true
             }
         })
