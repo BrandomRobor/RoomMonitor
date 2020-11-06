@@ -12,11 +12,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/room_icon_description"
         android:padding="4dp"
-        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="?attr/colorOnSurface"
-        tools:visibility="visible" />
+        tools:src="@drawable/ic_info" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/details_room_title"

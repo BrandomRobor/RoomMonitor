@@ -32,12 +32,14 @@ class RoomDetailsAdapter(private val listener: OnDetailsCardClickListener) :
 
         fun bind(roomDetails: RoomDetails) {
             binding.itemRoomInclude.apply {
-                roomDetails.iconId?.let {
+                if (roomDetails.iconId.isNullOrBlank()) {
+                    detailsRoomIcon.isVisible = false
+                } else {
                     detailsRoomIcon.isVisible = true
                     detailsRoomIcon.setImageDrawable(
                         IconicsDrawable(
                             binding.root.context,
-                            CommunityMaterial.getIcon(it)
+                            CommunityMaterial.getIcon(roomDetails.iconId)
                         )
                     )
                 }

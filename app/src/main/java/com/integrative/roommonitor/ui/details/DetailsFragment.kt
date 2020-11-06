@@ -24,12 +24,14 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
         binding.apply {
             fragmentDetailsInclude.apply {
-                roomDetails.iconId?.let {
+                if (roomDetails.iconId.isNullOrBlank()) {
+                    detailsRoomIcon.isVisible = false
+                } else {
                     detailsRoomIcon.isVisible = true
                     detailsRoomIcon.setImageDrawable(
                         IconicsDrawable(
                             requireContext(),
-                            CommunityMaterial.getIcon(it)
+                            CommunityMaterial.getIcon(roomDetails.iconId)
                         )
                     )
                 }
