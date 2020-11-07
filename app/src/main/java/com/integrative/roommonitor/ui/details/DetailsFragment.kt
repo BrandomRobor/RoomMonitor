@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.integrative.roommonitor.R
 import com.integrative.roommonitor.databinding.FragmentDetailsBinding
@@ -16,6 +17,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
     private val args by navArgs<DetailsFragmentArgs>()
+    private val viewModel by viewModels<DetailsViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,6 +44,10 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
             detailsObjectRecyclerView.adapter = adapter
             detailsObjectRecyclerView.isNestedScrollingEnabled = false
+
+            viewModel.getAllObjectsData(args.roomDetails.id).observe(viewLifecycleOwner, {
+                adapter.submitData(it)
+            })
         }
     }
 

@@ -1,5 +1,6 @@
 package com.integrative.roommonitor.di
 
+import com.integrative.roommonitor.api.ObjectDataApi
 import com.integrative.roommonitor.api.RoomDetailsApi
 import dagger.Module
 import dagger.Provides
@@ -24,4 +25,9 @@ object AppModule {
     @Singleton
     fun provideRoomDetailsApi(retrofit: Retrofit): RoomDetailsApi =
         retrofit.create(RoomDetailsApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideObjectDataApi(retrofit: Retrofit): ObjectDataApi =
+        retrofit.create(ObjectDataApi::class.java)
 }
