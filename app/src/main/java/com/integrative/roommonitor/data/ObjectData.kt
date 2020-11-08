@@ -1,11 +1,11 @@
 package com.integrative.roommonitor.data
 
-import androidx.lifecycle.MutableLiveData
+import com.squareup.moshi.Json
 
 data class ObjectData(
-    val id: String,
+    @field:Json(name = "_id") val id: String,
     val name: String,
     val description: String?,
     val iconId: String?,
-    val status: MutableLiveData<Boolean>
+    val status: Boolean
 )

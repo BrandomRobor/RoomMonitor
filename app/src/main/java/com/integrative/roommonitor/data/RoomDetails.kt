@@ -6,8 +6,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class RoomDetails(
-    @Json(name = "_id")
-    val id: String,
+    @field:Json(name = "_id") val id: String,
     val title: String,
     val description: String?,
     val location: String?,

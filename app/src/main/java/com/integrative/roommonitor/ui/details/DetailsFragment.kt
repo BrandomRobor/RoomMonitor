@@ -45,8 +45,8 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             detailsObjectRecyclerView.adapter = adapter
             detailsObjectRecyclerView.isNestedScrollingEnabled = false
 
-            viewModel.getAllObjectsData(args.roomDetails.id).observe(viewLifecycleOwner, {
-                adapter.submitData(it)
+            viewModel.getAllObjectsData(roomDetails.id).observe(viewLifecycleOwner, {
+                adapter.submitData(it.objects)
             })
         }
     }
