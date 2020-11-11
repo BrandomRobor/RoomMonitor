@@ -87,4 +87,10 @@ dependencies {
 
     // Swipe to refresh
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
+    // Scarlet - Socket.IO client
+    implementation("com.tinder.scarlet:scarlet:0.2.5-SNAPSHOT")
+    implementation("com.tinder.scarlet:message-adapter-moshi:0.2.5-SNAPSHOT")
+    implementation("com.tinder.scarlet:protocol-socketio-client:0.2.5-SNAPSHOT")
+    implementation("com.tinder.scarlet:stream-adapter-coroutines:0.2.5-SNAPSHOT")
 }
