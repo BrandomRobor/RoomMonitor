@@ -1,5 +1,6 @@
 package com.integrative.roommonitor.ui.details
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
@@ -43,6 +44,7 @@ class ObjectDataAdapter : RecyclerView.Adapter<ObjectDataAdapter.ObjectDataViewH
                         )
                     )
                 }
+                root.setCardBackgroundColor(if (objectData.status) Color.GREEN else Color.RED)
                 detailsObjectName.text = objectData.name
                 detailsObjectDescription.text = objectData.description ?: "No description available"
             }
