@@ -31,15 +31,26 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Room title" />
 
+    <com.mikepenz.iconics.view.IconicsTextView
+        android:id="@+id/details_room_location"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/details_room_icon"
+        app:layout_constraintTop_toBottomOf="@id/details_room_title"
+        tools:text="{cmd_map_marker} Room location" />
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/details_room_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="4dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/details_room_icon"
-        app:layout_constraintTop_toBottomOf="@id/details_room_title"
+        app:layout_constraintTop_toBottomOf="@id/details_room_location"
         tools:text="Room description" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

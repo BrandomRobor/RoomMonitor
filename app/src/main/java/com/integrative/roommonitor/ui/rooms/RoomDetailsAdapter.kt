@@ -6,6 +6,7 @@ import androidx.core.view.isVisible
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.integrative.roommonitor.R
 import com.integrative.roommonitor.data.RoomDetails
 import com.integrative.roommonitor.databinding.ItemRoomDetailsCardBinding
 import com.mikepenz.iconics.IconicsDrawable
@@ -43,6 +44,15 @@ class RoomDetailsAdapter(private val listener: OnDetailsCardClickListener) :
                         )
                     )
                 }
+
+                if (roomDetails.location.isNullOrBlank()) {
+                    detailsRoomLocation.isVisible = false
+                } else {
+                    detailsRoomLocation.isVisible = true
+                    detailsRoomLocation.text =
+                        root.context.getString(R.string.location_string, roomDetails.location)
+                }
+
                 detailsRoomTitle.text = roomDetails.title
                 detailsRoomDescription.text = roomDetails.description ?: "No description available"
             }

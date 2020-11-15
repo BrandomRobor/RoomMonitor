@@ -38,6 +38,15 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                         )
                     )
                 }
+
+                if (roomDetails.location.isNullOrBlank()) {
+                    detailsRoomLocation.isVisible = false
+                } else {
+                    detailsRoomLocation.isVisible = true
+                    detailsRoomLocation.text =
+                        getString(R.string.location_string, roomDetails.location)
+                }
+
                 detailsRoomTitle.text = roomDetails.title
                 detailsRoomDescription.text = roomDetails.description
             }
