@@ -121,6 +121,7 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms),
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.roomsRecyclerView.adapter = null
         _binding = null
     }
 }
