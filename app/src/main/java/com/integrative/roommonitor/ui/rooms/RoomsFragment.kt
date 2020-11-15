@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
+import androidx.paging.filter
 import com.integrative.roommonitor.R
 import com.integrative.roommonitor.data.RoomDetails
 import com.integrative.roommonitor.databinding.FragmentRoomsBinding
@@ -78,11 +79,12 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms),
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                val filteredData = viewModel.roomsDetails.value?.filterSync {
+                val filteredData = viewModel.roomsDetails.value?.filter {
                     it.title.contains(query!!.trim(), true)
                 }
                 binding.roomsRecyclerView.scrollToPosition(0)
                 adapter.submitData(viewLifecycleOwner.lifecycle, filteredData!!)
+                binding.roomsZeroRooms.isVisible = adapter.snapshot().size < 1
                 searchView.clearFocus()
                 return true
             }
@@ -94,6 +96,7 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms),
             override fun onMenuItemActionExpand(p0: MenuItem?): Boolean = true
 
             override fun onMenuItemActionCollapse(p0: MenuItem?): Boolean {
+                binding.roomsZeroRooms.isVisible = false
                 binding.roomsRecyclerView.scrollToPosition(0)
                 adapter.submitData(viewLifecycleOwner.lifecycle, viewModel.roomsDetails.value!!)
                 return true
