@@ -24,4 +24,8 @@ class ObjectDataRepository @Inject constructor(
         }
         socket.connect()
     }
+
+    fun closeConnection() {
+        socket.close()
+    }
 }

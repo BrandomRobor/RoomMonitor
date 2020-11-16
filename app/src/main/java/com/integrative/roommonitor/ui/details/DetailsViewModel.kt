@@ -17,4 +17,8 @@ class DetailsViewModel @ViewModelInject constructor(private val objectDataReposi
     fun requestUpdates(id: String) {
         objectDataRepository.requestUpdates(id)
     }
+
+    fun closeConnection() {
+        objectDataRepository.closeConnection()
+    }
 }
