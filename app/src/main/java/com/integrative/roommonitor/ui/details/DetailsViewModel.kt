@@ -13,4 +13,8 @@ class DetailsViewModel @ViewModelInject constructor(private val objectDataReposi
     fun getAllObjectsData(id: String): LiveData<RoomObjects> = liveData(Dispatchers.IO) {
         emit(objectDataRepository.getAllObjectsData(id))
     }
+
+    fun requestUpdates(id: String) {
+        objectDataRepository.requestUpdates(id)
+    }
 }

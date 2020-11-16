@@ -58,6 +58,8 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                 adapter.submitData(it.objects)
             }
         }
+
+        viewModel.requestUpdates(roomDetails.id)
     }
 
     override fun onDestroyView() {
