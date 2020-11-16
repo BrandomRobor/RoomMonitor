@@ -70,7 +70,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
 
     // Paging 3
-    implementation("androidx.paging:paging-runtime-ktx:3.0.0-alpha08")
+    implementation("androidx.paging:paging-runtime-ktx:3.0.0-alpha09")
 
     // LeakCanary
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.5")
@@ -87,4 +87,9 @@ dependencies {
 
     // Swipe to refresh
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
+    // Socket.io client
+    implementation("io.socket:socket.io-client:1.0.0") {
+        exclude("org.json", "json")
+    }
 }
