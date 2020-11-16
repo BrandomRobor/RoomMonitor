@@ -7,15 +7,14 @@ import java.io.IOException
 
 class RoomDetailsPagingSource(
     private val roomDetailsApi: RoomDetailsApi
-) :
-    PagingSource<Int, RoomDetails>() {
+) : PagingSource<Int, RoomDetails>() {
     companion object {
         private const val STARTING_PAGE = 1
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, RoomDetails> {
-        val position = params.key ?: STARTING_PAGE
-        return try {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, RoomDetails> =
+        try {
+            val position = params.key ?: STARTING_PAGE
             val roomsDetails = roomDetailsApi.getRooms(position, params.loadSize)
             LoadResult.Page(
                 roomsDetails,
@@ -27,5 +26,4 @@ class RoomDetailsPagingSource(
         } catch (http: HttpException) {
             LoadResult.Error(http)
         }
-    }
 }

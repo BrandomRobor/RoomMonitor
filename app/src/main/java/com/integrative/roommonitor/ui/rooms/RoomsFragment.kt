@@ -43,9 +43,9 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms),
             }
         }
 
-        viewModel.roomsDetails.observe(viewLifecycleOwner, {
+        viewModel.roomsDetails.observe(viewLifecycleOwner) {
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
-        })
+        }
 
         adapter.addLoadStateListener {
             binding.apply {
