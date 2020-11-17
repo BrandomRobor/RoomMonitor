@@ -7,5 +7,5 @@ data class ObjectData(
     val name: String,
     val description: String?,
     val iconId: String?,
-    val status: Boolean
+    var status: Boolean
 )

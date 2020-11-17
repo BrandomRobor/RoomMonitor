@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.integrative.roommonitor.R
+import com.integrative.roommonitor.data.ObjectData
 import com.integrative.roommonitor.databinding.FragmentDetailsBinding
 import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial
@@ -24,6 +25,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         _binding = FragmentDetailsBinding.bind(view)
         val roomDetails = args.roomDetails
         val adapter = ObjectDataAdapter()
+        val objectList = mutableListOf<ObjectData>()
 
         binding.apply {
             fragmentDetailsInclude.apply {
@@ -52,10 +54,17 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             }
 
             detailsObjectRecyclerView.adapter = adapter
-            detailsObjectRecyclerView.isNestedScrollingEnabled = false
 
             viewModel.getAllObjectsData(roomDetails.id).observe(viewLifecycleOwner) {
                 adapter.submitData(it.objects)
+
+                // Map function called to create a deep copy of the list
+                objectList.addAll(it.objects.map { data -> data.copy() })
+            }
+
+            viewModel.liveObjectInfo.observe(viewLifecycleOwner) { newInfo ->
+                objectList.find { it.id == newInfo.id }?.status = newInfo.status
+                adapter.submitData(objectList.map { data -> data.copy() })
             }
         }
 
