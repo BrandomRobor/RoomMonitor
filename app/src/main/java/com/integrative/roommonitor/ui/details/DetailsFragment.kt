@@ -5,12 +5,14 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.integrative.roommonitor.R
 import com.integrative.roommonitor.databinding.FragmentDetailsBinding
 import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment(R.layout.fragment_details) {
@@ -53,15 +55,15 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
             detailsObjectRecyclerView.adapter = adapter
 
-            viewModel.getAllObjectsData(roomDetails.id).observe(viewLifecycleOwner) {
-                adapter.submitList(it.objects)
-            }
+            viewLifecycleOwner.lifecycleScope.launch {
+                adapter.submitList(viewModel.getAllObjectsData(roomDetails.id).objects)
 
-            viewModel.liveObjectInfo.observe(viewLifecycleOwner) { newInfo ->
-                // Map function called to create a deep copy of the list
-                adapter.submitList(adapter.currentList.map {
-                    it.copy(status = if (it.id == newInfo.id) newInfo.status else it.status)
-                })
+                viewModel.liveObjectInfo.observe(viewLifecycleOwner) { newInfo ->
+                    // Map function called to create a deep copy of the list
+                    adapter.submitList(adapter.currentList.map {
+                        it.copy(status = if (it.id == newInfo.id) newInfo.status else it.status)
+                    })
+                }
             }
         }
 
