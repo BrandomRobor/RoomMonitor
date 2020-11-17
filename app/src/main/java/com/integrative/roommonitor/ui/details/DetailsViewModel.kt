@@ -21,4 +21,6 @@ class DetailsViewModel @ViewModelInject constructor(private val objectDataReposi
     fun closeConnection() {
         objectDataRepository.closeConnection()
     }
+
+    val liveObjectInfo = objectDataRepository.liveObjectInfo
 }
