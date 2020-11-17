@@ -56,7 +56,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             detailsObjectRecyclerView.adapter = adapter
 
             viewModel.getAllObjectsData(roomDetails.id).observe(viewLifecycleOwner) {
-                adapter.submitData(it.objects)
+                adapter.submitList(it.objects)
 
                 // Map function called to create a deep copy of the list
                 objectList.addAll(it.objects.map { data -> data.copy() })
@@ -64,7 +64,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
             viewModel.liveObjectInfo.observe(viewLifecycleOwner) { newInfo ->
                 objectList.find { it.id == newInfo.id }?.status = newInfo.status
-                adapter.submitData(objectList.map { data -> data.copy() })
+                adapter.submitList(objectList.map { data -> data.copy() })
             }
         }
 

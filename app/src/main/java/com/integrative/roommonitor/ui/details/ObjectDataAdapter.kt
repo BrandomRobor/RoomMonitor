@@ -4,15 +4,17 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.integrative.roommonitor.data.ObjectData
 import com.integrative.roommonitor.databinding.ItemDetailsObjectCardBinding
 import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial
 
-class ObjectDataAdapter : RecyclerView.Adapter<ObjectDataAdapter.ObjectDataViewHolder>() {
+class ObjectDataAdapter : ListAdapter<ObjectData, ObjectDataAdapter.ObjectDataViewHolder>(
+    diffCallback
+) {
     companion object {
         val diffCallback = object : DiffUtil.ItemCallback<ObjectData>() {
             override fun areItemsTheSame(oldItem: ObjectData, newItem: ObjectData): Boolean =
@@ -21,12 +23,6 @@ class ObjectDataAdapter : RecyclerView.Adapter<ObjectDataAdapter.ObjectDataViewH
             override fun areContentsTheSame(oldItem: ObjectData, newItem: ObjectData): Boolean =
                 oldItem == newItem
         }
-    }
-
-    private val asyncDiffer = AsyncListDiffer(this, diffCallback)
-
-    fun submitData(newList: List<ObjectData>) {
-        asyncDiffer.submitList(newList)
     }
 
     class ObjectDataViewHolder(private val binding: ItemDetailsObjectCardBinding) :
@@ -51,17 +47,15 @@ class ObjectDataAdapter : RecyclerView.Adapter<ObjectDataAdapter.ObjectDataViewH
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ObjectDataViewHolder {
-        val binding =
-            ItemDetailsObjectCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ObjectDataViewHolder(binding)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ObjectDataViewHolder =
+        ObjectDataViewHolder(
+            ItemDetailsObjectCardBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
 
-    override fun onBindViewHolder(holder: ObjectDataViewHolder, position: Int) {
-        val objectData = asyncDiffer.currentList[position]
-        holder.bind(objectData)
-    }
-
-    override fun getItemCount(): Int =
-        asyncDiffer.currentList.size
+    override fun onBindViewHolder(holder: ObjectDataViewHolder, position: Int) =
+        holder.bind(getItem(position))
 }
