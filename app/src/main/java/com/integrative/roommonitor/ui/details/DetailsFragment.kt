@@ -9,7 +9,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.integrative.roommonitor.R
 import com.integrative.roommonitor.data.ObjectData
-import com.integrative.roommonitor.data.ObjectInfo
 import com.integrative.roommonitor.databinding.FragmentDetailsBinding
 import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial
@@ -73,7 +72,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         viewModel.requestUpdates(roomDetails.id)
     }
 
-    private suspend fun mapList(list: List<ObjectData>, update: ObjectInfo): List<ObjectData> =
+    private suspend fun mapList(list: List<ObjectData>, update: ObjectData): List<ObjectData> =
         withContext(Dispatchers.Default) {
             list.map {
                 it.copy(status = if (it.id == update.id) update.status else it.status)

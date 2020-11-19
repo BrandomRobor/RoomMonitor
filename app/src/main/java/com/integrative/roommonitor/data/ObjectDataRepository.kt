@@ -1,6 +1,5 @@
 package com.integrative.roommonitor.data
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.integrative.roommonitor.api.ObjectDataApi
 import io.socket.client.Socket
@@ -20,8 +19,11 @@ class ObjectDataRepository @Inject constructor(
             socket.emit("joinUpdates", id)
         }.on("objectUpdate") {
             val objectInfo = it[0] as JSONObject
-            val transformedInfo = ObjectInfo(
+            val transformedInfo = ObjectData(
                 objectInfo.getString("id"),
+                "",
+                null,
+                null,
                 objectInfo.getBoolean("status")
             )
             liveObjectInfo.postValue(transformedInfo)
@@ -29,7 +31,7 @@ class ObjectDataRepository @Inject constructor(
         socket.connect()
     }
 
-    val liveObjectInfo = MutableLiveData<ObjectInfo>()
+    val liveObjectInfo = MutableLiveData<ObjectData>()
 
     fun closeConnection() {
         socket.close()
