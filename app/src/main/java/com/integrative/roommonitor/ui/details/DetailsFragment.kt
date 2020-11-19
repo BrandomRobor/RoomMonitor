@@ -8,11 +8,15 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.integrative.roommonitor.R
+import com.integrative.roommonitor.data.ObjectData
+import com.integrative.roommonitor.data.ObjectInfo
 import com.integrative.roommonitor.databinding.FragmentDetailsBinding
 import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment(R.layout.fragment_details) {
@@ -57,12 +61,11 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
             viewLifecycleOwner.lifecycleScope.launch {
                 adapter.submitList(viewModel.getAllObjectsData(roomDetails.id).objects)
+            }
 
-                viewModel.liveObjectInfo.observe(viewLifecycleOwner) { newInfo ->
-                    // Map function called to create a deep copy of the list
-                    adapter.submitList(adapter.currentList.map {
-                        it.copy(status = if (it.id == newInfo.id) newInfo.status else it.status)
-                    })
+            viewModel.liveObjectInfo.observe(viewLifecycleOwner) { newInfo ->
+                viewLifecycleOwner.lifecycleScope.launch {
+                    adapter.submitList(mapList(adapter.currentList, newInfo))
                 }
             }
         }
@@ -70,8 +73,16 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         viewModel.requestUpdates(roomDetails.id)
     }
 
+    private suspend fun mapList(list: List<ObjectData>, update: ObjectInfo): List<ObjectData> =
+        withContext(Dispatchers.Default) {
+            list.map {
+                it.copy(status = if (it.id == update.id) update.status else it.status)
+            }
+        }
+
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.detailsObjectRecyclerView.adapter = null
         _binding = null
         viewModel.closeConnection()
     }
