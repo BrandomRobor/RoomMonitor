@@ -18,11 +18,6 @@ class ObjectDataRepository @Inject constructor(
     fun requestUpdates(id: String) {
         socket.on(Socket.EVENT_CONNECT) {
             socket.emit("joinUpdates", id)
-            Log.d("SocketMessage", "Connected!")
-        }.on(Socket.EVENT_CONNECTING) {
-            Log.d("SocketMessage", "Connecting...")
-        }.on(Socket.EVENT_CONNECT_ERROR) {
-            Log.d("SocketMessage", "Error connecting!")
         }.on("objectUpdate") {
             val objectInfo = it[0] as JSONObject
             val transformedInfo = ObjectInfo(
