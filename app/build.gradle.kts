@@ -92,4 +92,7 @@ dependencies {
     implementation("io.socket:socket.io-client:1.0.0") {
         exclude("org.json", "json")
     }
+
+    // Preference library
+    implementation("androidx.preference:preference-ktx:1.1.1")
 }
