@@ -3,7 +3,6 @@
         <item name="materialDrawerStyle">@style/Widget.MaterialDrawerStyle</item>
         <item name="materialDrawerHeaderStyle">@style/Widget.MaterialDrawerHeaderStyle</item>
 
-        <item name="android:windowTranslucentStatus">true</item>
         <item name="windowActionModeOverlay">true</item>
     </style>
 </resources>
