@@ -53,7 +53,7 @@ class RoomDetailsAdapter(private val listener: OnDetailsCardClickListener) :
                         root.context.getString(R.string.location_string, roomDetails.location)
                 }
 
-                detailsRoomTitle.text = roomDetails.title
+                detailsRoomTitle.text = roomDetails.name
                 detailsRoomDescription.text = roomDetails.description ?: "No description available"
             }
         }

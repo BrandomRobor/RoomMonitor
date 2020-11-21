@@ -8,6 +8,6 @@ interface RoomDetailsApi {
     @GET("rooms")
     suspend fun getRooms(
         @Query("page") page: Int,
-        @Query("perPage") perPage: Int
+        @Query("limit") perPage: Int
     ): List<RoomDetails>
 }

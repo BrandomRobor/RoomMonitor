@@ -80,7 +80,7 @@ class RoomsFragment : Fragment(R.layout.fragment_rooms),
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 val filteredData = viewModel.roomsDetails.value?.filter {
-                    it.title.contains(query!!.trim(), true)
+                    it.name.contains(query!!.trim(), true)
                 }
                 binding.roomsRecyclerView.scrollToPosition(0)
                 adapter.submitData(viewLifecycleOwner.lifecycle, filteredData!!)

@@ -52,7 +52,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                         getString(R.string.location_string, roomDetails.location)
                 }
 
-                detailsRoomTitle.text = roomDetails.title
+                detailsRoomTitle.text = roomDetails.name
                 detailsRoomDescription.text = roomDetails.description
             }
 

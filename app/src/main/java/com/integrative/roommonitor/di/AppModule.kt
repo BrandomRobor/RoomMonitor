@@ -15,7 +15,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(ApplicationComponent::class)
 object AppModule {
-    private const val BASE_URL = "https://roommonitor-api.herokuapp.com/"
+    private const val BASE_URL = "https://room-monitor-api.herokuapp.com/"
 
     @Provides
     @Singleton
