@@ -23,4 +23,8 @@
             android:name="roomDetails"
             app:argType="com.integrative.roommonitor.data.RoomDetails" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.integrative.roommonitor.ui.settings.SettingsFragment"
+        android:label="Settings" />
 </navigation>

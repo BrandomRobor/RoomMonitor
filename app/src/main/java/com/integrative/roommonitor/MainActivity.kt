@@ -11,6 +11,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.integrative.roommonitor.databinding.ActivityMainBinding
 import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial
 import com.mikepenz.materialdrawer.iconics.iconicsIcon
+import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.NavigationDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem
@@ -50,6 +51,11 @@ class MainActivity : AppCompatActivity() {
                 NavigationDrawerItem(R.id.navigation_rooms_fragment, PrimaryDrawerItem().apply {
                     nameRes = R.string.fragment_rooms_title
                     iconicsIcon = CommunityMaterial.Icon3.cmd_map_marker
+                }),
+                DividerDrawerItem(),
+                NavigationDrawerItem(R.id.settingsFragment, PrimaryDrawerItem().apply {
+                    nameText = "Settings"
+                    iconicsIcon = CommunityMaterial.Icon.cmd_cog
                 })
             )
         }
