@@ -2,8 +2,8 @@ package com.integrative.roommonitor.ui.details
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
-import com.integrative.roommonitor.data.ObjectDataRepository
-import com.integrative.roommonitor.data.RoomObjects
+import com.integrative.roommonitor.data.objects.ObjectDataRepository
+import com.integrative.roommonitor.data.objects.RoomObjects
 
 class DetailsViewModel @ViewModelInject constructor(private val objectDataRepository: ObjectDataRepository) :
     ViewModel() {

@@ -8,7 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.integrative.roommonitor.R
-import com.integrative.roommonitor.data.ObjectData
+import com.integrative.roommonitor.data.objects.ObjectData
 import com.integrative.roommonitor.databinding.FragmentDetailsBinding
 import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial

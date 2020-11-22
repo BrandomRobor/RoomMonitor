@@ -1,6 +1,6 @@
 package com.integrative.roommonitor.api
 
-import com.integrative.roommonitor.data.RoomObjects
+import com.integrative.roommonitor.data.objects.RoomObjects
 import retrofit2.http.GET
 import retrofit2.http.Path
 

@@ -7,7 +7,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.integrative.roommonitor.data.ObjectData
+import com.integrative.roommonitor.data.objects.ObjectData
 import com.integrative.roommonitor.databinding.ItemDetailsObjectCardBinding
 import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial

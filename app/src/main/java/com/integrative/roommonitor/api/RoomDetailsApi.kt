@@ -1,6 +1,6 @@
 package com.integrative.roommonitor.api
 
-import com.integrative.roommonitor.data.RoomDetails
+import com.integrative.roommonitor.data.rooms.RoomDetails
 import retrofit2.http.GET
 import retrofit2.http.Query
 

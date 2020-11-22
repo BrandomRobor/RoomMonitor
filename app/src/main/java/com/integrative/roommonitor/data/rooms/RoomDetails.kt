@@ -1,4 +1,4 @@
-package com.integrative.roommonitor.data
+package com.integrative.roommonitor.data.rooms
 
 import android.os.Parcelable
 import com.squareup.moshi.Json

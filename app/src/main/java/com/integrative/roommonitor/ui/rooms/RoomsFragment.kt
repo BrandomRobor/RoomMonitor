@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.paging.filter
 import com.integrative.roommonitor.R
-import com.integrative.roommonitor.data.RoomDetails
+import com.integrative.roommonitor.data.rooms.RoomDetails
 import com.integrative.roommonitor.databinding.FragmentRoomsBinding
 import dagger.hilt.android.AndroidEntryPoint
 

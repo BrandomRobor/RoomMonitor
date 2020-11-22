@@ -7,7 +7,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.integrative.roommonitor.R
-import com.integrative.roommonitor.data.RoomDetails
+import com.integrative.roommonitor.data.rooms.RoomDetails
 import com.integrative.roommonitor.databinding.ItemRoomDetailsCardBinding
 import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.iconics.typeface.library.community.material.CommunityMaterial

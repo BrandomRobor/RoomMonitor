@@ -1,4 +1,4 @@
-package com.integrative.roommonitor.data
+package com.integrative.roommonitor.data.rooms
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig

@@ -1,4 +1,4 @@
-package com.integrative.roommonitor.data
+package com.integrative.roommonitor.data.rooms
 
 import androidx.paging.PagingSource
 import com.integrative.roommonitor.api.RoomDetailsApi

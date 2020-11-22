@@ -21,7 +21,7 @@
         tools:layout="@layout/fragment_details">
         <argument
             android:name="roomDetails"
-            app:argType="com.integrative.roommonitor.data.RoomDetails" />
+            app:argType="com.integrative.roommonitor.data.rooms.RoomDetails" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"

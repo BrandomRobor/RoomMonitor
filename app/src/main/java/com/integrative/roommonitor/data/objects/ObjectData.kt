@@ -1,4 +1,4 @@
-package com.integrative.roommonitor.data
+package com.integrative.roommonitor.data.objects
 
 import com.squareup.moshi.Json
 
