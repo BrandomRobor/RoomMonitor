@@ -7,6 +7,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.integrative.roommonitor.R
 import com.integrative.roommonitor.data.objects.ObjectData
 import com.integrative.roommonitor.databinding.ItemDetailsObjectCardBinding
 import com.mikepenz.iconics.IconicsDrawable
@@ -42,7 +43,8 @@ class ObjectDataAdapter : ListAdapter<ObjectData, ObjectDataAdapter.ObjectDataVi
                 }
                 root.setCardBackgroundColor(if (objectData.status) Color.GREEN else Color.RED)
                 detailsObjectName.text = objectData.name
-                detailsObjectDescription.text = objectData.description ?: "No description available"
+                detailsObjectDescription.text =
+                    objectData.description ?: root.context.getString(R.string.card_no_description)
             }
         }
     }

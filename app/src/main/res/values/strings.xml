@@ -11,4 +11,5 @@
     <string name="fragment_details_title">Details</string>
     <string name="rooms_refresh_button">Refresh</string>
     <string name="location_string" translatable="false">{cmd_map_marker} %1$s</string>
+    <string name="card_no_description">No description available</string>
 </resources>
