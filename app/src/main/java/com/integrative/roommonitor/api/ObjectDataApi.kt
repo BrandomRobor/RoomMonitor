@@ -2,11 +2,11 @@ package com.integrative.roommonitor.api
 
 import com.integrative.roommonitor.data.RoomObjects
 import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.Path
 
 interface ObjectDataApi {
-    @GET("objects")
+    @GET("objects/{id}")
     suspend fun getObjects(
-        @Query("id") id: String
+        @Path("id") id: String
     ): RoomObjects
 }
