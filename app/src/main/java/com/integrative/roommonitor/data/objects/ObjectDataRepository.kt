@@ -21,9 +21,6 @@ class ObjectDataRepository @Inject constructor(
             val objectInfo = it[0] as JSONObject
             val transformedInfo = ObjectData(
                 objectInfo.getString("id"),
-                "",
-                null,
-                null,
                 objectInfo.getBoolean("status")
             )
             liveObjectInfo.postValue(transformedInfo)
