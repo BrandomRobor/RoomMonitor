@@ -60,6 +60,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
             viewLifecycleOwner.lifecycleScope.launch {
                 adapter.submitList(viewModel.getAllObjectsData(roomDetails.id).objects)
+                detailsZeroObjects.isVisible = adapter.itemCount < 1
             }
 
             viewModel.liveObjectInfo.observe(viewLifecycleOwner) { newInfo ->

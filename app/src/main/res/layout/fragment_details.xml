@@ -16,6 +16,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/details_zero_objects"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/details_no_objects"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_details_include" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/details_object_recycler_view"
             android:layout_width="match_parent"
